@@ -1,0 +1,14 @@
+<div class="container mt-3">
+
+  <div class="row">
+    <div class="col-8  my-3">
+        <div class="card-body bg-light">
+            <h2><%= @pub.name %></h2>
+            <p><%= @pub.address %></p>
+            <p> <%= @pub.user.email %> </p>
+            <%= link_to "Back to Pub List", pubs_path %>
+        </div>
+    </div>
+  </div>
+
+</div>
