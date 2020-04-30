@@ -1,8 +1,8 @@
 class PubsController < ApplicationController
-  before_action :find_pub, only: [:show, :create, :update, :destroy ]
+  before_action :find_pub, only: [:show, :edit, :update, :destroy ]
 
   def index
-    @pubs = Pub.all
+    @pubs = policy_scope(Pub).order(name: :asc)
   end
 
   def show
@@ -10,11 +10,13 @@ class PubsController < ApplicationController
 
   def new
     @pub = Pub.new
+    authorize @pub
   end
 
   def create
     @pub = Pub.new(pub_params)
     @pub.user = current_user
+    authorize @pub
     if @pub.save
       redirect_to pubs_path
     else 
@@ -28,6 +30,7 @@ class PubsController < ApplicationController
 
   def find_pub
     @pub = Pub.find(params[:id])
+    authorize @pub
   end
 
   def pub_params
