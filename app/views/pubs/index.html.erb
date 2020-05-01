@@ -12,8 +12,12 @@
 
           <div class="card-footer text-muted bg-white">
             <span><%= link_to "More info", pub_path(pub) %></span>
-            <span class="mx-2"><%= link_to "Edit", edit_pub_path(pub), class: "text-warning"  %></span> 
+            <% if policy(pub).edit? %>
+              <span class="mx-2"><%= link_to "Edit", edit_pub_path(pub), class: "text-warning"  %></span>
+            <% end %> 
+            <% if policy(pub).destroy? %>
             <span class="mx-2"><%= link_to "Delete", pub_path(pub), method: :delete, data: { confirm: 'Deleting. Are you sure?'}, class: "text-danger"  %></span> 
+            <% end %>
           </div>
 
         </div>

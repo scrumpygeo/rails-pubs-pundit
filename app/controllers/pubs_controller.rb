@@ -36,6 +36,10 @@ class PubsController < ApplicationController
     end
   end
 
+  def destroy
+    @pub.destroy
+    redirect_to pubs_url, notice: 'Pub was successfully removed.' 
+  end
 
   private
 
