@@ -1,5 +1,5 @@
 class PubsController < ApplicationController
-  before_action :find_pub, only: [:show, :edit, :update, :destroy ]
+  before_action :set_pub, only: [:show, :edit, :update, :destroy ]
 
   def index
     @pubs = policy_scope(Pub).order(name: :asc)
@@ -28,7 +28,7 @@ class PubsController < ApplicationController
 
   private
 
-  def find_pub
+  def set_pub
     @pub = Pub.find(params[:id])
     authorize @pub
   end
