@@ -25,6 +25,17 @@ class PubsController < ApplicationController
 
   end
 
+  def edit
+  end
+
+  def update
+    if @pub.update(pub_params)
+      redirect_to pub_path(@pub)
+    else
+      render :edit
+    end
+  end
+
 
   private
 
