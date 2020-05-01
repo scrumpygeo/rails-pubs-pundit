@@ -26,5 +26,7 @@
     <% end %>
 
   </div>
-  <%= link_to "Add a Pub", new_pub_path  %>
+  <% if policy(Pub) %>
+    <%= link_to "Add a Pub", new_pub_path  %>
+  <% end %>
 </div>
